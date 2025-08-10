@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delhi High Court Case Status</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            background-color: white;
+            padding: 20px;
+            max-width: 500px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+        select, input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        input[type="submit"] {
+            background-color: #c5aa74;
+            color: white;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #b49862;
+        }
+        .result {
+            background-color: white;
+            padding: 20px;
+            margin-top: 20px;
+            max-width: 800px;
+            margin: 20px auto;
+            white-space: pre-wrap;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            overflow-x: auto;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 10px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #c5aa74;
+            color: white;
+            text-align: left;
+            padding: 8px;
+        }
+        td {
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Search Delhi High Court Case</h2>
+
+<form method="POST">
+    <label for="case_type">Case Type:</label>
+    <select name="case_type" id="case_type" required>
+        <option value="">Select Case Type</option>
+        <option value="RSA">RSA</option>
+        <option value="SCA">SCA</option>
+        <option value="SDR">SDR</option>
+        <option value="SERTA">SERTA</option>
+        <option value="STC">STC</option>
+        <option value="W.P.(C)">W.P.(C)</option>
+        <option value="W.P.(C)-IPD">W.P.(C)-IPD</option>
+        <option value="WP(C)(IPD)">WP(C)(IPD)</option>
+        <option value="W.P.(CRL)">W.P.(CRL)</option>
+        <option value="WTA">WTA</option>
+        <option value="WTC">WTC</option>
+        <option value="WTR">WTR</option>
+    </select>
+
+    <label for="case_number">Case Number:</label>
+    <input type="text" name="case_number" id="case_number" required placeholder="e.g., 1234">
+
+    <label for="case_year">Case Year:</label>
+    <select name="case_year" id="case_year" required>
+        {% for y in range(2000, 2026) %}
+            <option value="{{y}}">{{y}}</option>
+        {% endfor %}
+    </select>
+
+    <input type="submit" value="Search Case">
+</form>
+
+{% if result %}
+<div class="result">
+    {{ result|safe }}
+</div>
+{% endif %}
+
+</body>
+</html>
